@@ -5,15 +5,15 @@ from src.drinks import Drinks
 
 class TestCoffeeShop(unittest.TestCase):
     def setUp(self):
-        self.drink_1 = Drinks("Hot Chocolate", 20.00)
-        self.drink_2 = Drinks("Espresso", 15.00)
-        self.drink_3 = Drinks("Latte", 10.00)
+        self.drink_1 = Drinks("Hot Chocolate", 20.00, 1)
+        self.drink_2 = Drinks("Espresso", 15.00, 3)
+        self.drink_3 = Drinks("Latte", 10.00, 2)
 
 
         drinks = [self.drink_1, self.drink_2, self.drink_3]
         
         self.coffee_shop = CoffeeShop('The Prancing Pony', 100.00, drinks)
-        self.customer = Customer("John Smith", 50.00)
+        self.customer = Customer("John Smith", 50.00, 20, 2)
 
 
 # testing class attributes
@@ -67,3 +67,27 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(110.00,self.coffee_shop.till)
         self.assertEqual(40.00, self.customer.wallet)
         self.assertEqual(1, len(self.customer.drink))
+
+    def test_customer_is_over_16__True__(self):
+        self.assertEqual(True, self.customer.age>16)
+
+    def test_customer_is_over_16__False__(self):
+        self.customer = Customer('David', 50, 12, 1)
+        self.assertEqual(False, self.coffee_shop.check_age(self.customer))
+    
+    def test_customer_energy_level_ok__True(self):
+        self.assertEqual(True, self.customer.check_energy_level(self.customer))
+
+    def test_customer_energy_level_ok__False(self):
+        self.customer = Customer('David', 50, 12, 3)
+        self.assertEqual(False, self.customer.check_energy_level(self.customer))
+
+
+    # [
+    #   "Hot Chocolate" : {
+    #         "price" :
+    #         "stock" : int
+    #         "caffine-levels" : int
+
+    #     }
+    # ]

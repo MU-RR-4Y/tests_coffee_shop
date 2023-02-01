@@ -5,11 +5,11 @@ from src.drinks import Drinks
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
-        self.customer = Customer("John Smith", 50.00)
+        self.customer = Customer("John Smith", 50.00, 20, 2)
 
-        self.drink_1 = Drinks("Hot Chocolate", 20.00)
-        self.drink_2 = Drinks("Espresso", 15.00)
-        self.drink_3 = Drinks("Latte", 10.00)
+        self.drink_1 = Drinks("Hot Chocolate", 20.00, 1)
+        self.drink_2 = Drinks("Espresso", 15.00, 3)
+        self.drink_3 = Drinks("Latte", 10.00, 2)
 
 
         drinks = [self.drink_1, self.drink_2, self.drink_3]
@@ -29,3 +29,15 @@ class TestCustomer(unittest.TestCase):
     def test_add_drink_to_customer(self):
         self.customer.add_drink(self.drink_2)
         self.assertEqual(1, len(self.customer.drink))
+
+    def test_customer_age(self):
+        self.assertEqual(20,self.customer.age)
+
+    def test_customer_energy_levels(self):
+        self.assertEqual(2, self.customer.energy_level)
+
+    
+    
+
+
+        
