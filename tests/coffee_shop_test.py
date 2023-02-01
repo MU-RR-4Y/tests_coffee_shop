@@ -2,6 +2,7 @@ import unittest
 from src.coffee_shop import CoffeeShop
 from src.customer import Customer
 from src.drinks import Drinks
+from src.food import Food
 
 class TestCoffeeShop(unittest.TestCase):
     def setUp(self):
@@ -11,6 +12,10 @@ class TestCoffeeShop(unittest.TestCase):
 
 
         drinks = [self.drink_1, self.drink_2, self.drink_3]
+
+        self.food_1 = Food('Cookie', 5, 1)
+        self.food_2 = Food('Muffin', 10, 2)
+        self.food_3 = Food('Cake', 15, 3)
         
         self.coffee_shop = CoffeeShop('The Prancing Pony', 100.00, drinks)
         self.customer = Customer("John Smith", 50.00, 20, 2)
@@ -83,11 +88,4 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(False, self.customer.check_energy_level(self.customer))
 
 
-    # [
-    #   "Hot Chocolate" : {
-    #         "price" :
-    #         "stock" : int
-    #         "caffine-levels" : int
-
-    #     }
-    # ]
+  
